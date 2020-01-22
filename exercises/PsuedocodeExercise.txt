@@ -1,6 +1,6 @@
 Names:
 Taylor Thompson
-Yi Chen: Github:Y604499781
+Yi Chen yi717123 : Github:Y604499781
 
 Psuedocode for Pinterest "pinning" feature
 
