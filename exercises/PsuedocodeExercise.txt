@@ -1,0 +1,15 @@
+Names:
+Taylor Thompson
+Yi Chen: Github:Y604499781
+
+Psuedocode for Pinterest "pinning" feature
+
+server displays images on main page
+User clicks on image
+Image is displayed in full screen with save button and share button
+User clicks on "save" button
+Brings the user to "board" selection page
+User clicks on board name 
+Image and data are copied to the selected board
+Image and data now appear in selected board
+"save" button is changed to "saved!" button
