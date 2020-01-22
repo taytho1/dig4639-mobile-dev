@@ -8,3 +8,7 @@ The *ice* folder contains in-class exercises.
 Hard working senior web design student attending The University of Central Florida with a 3.5 GPA looking for a position in web development. Wanting to use React and React Native knowledge to help the company grow. 
 
 Taylor Thompson LinkedIn profile: https://www.linkedin.com/in/taylor-thompsno-091b8919a/
+
+##conflicts
+
+This scetion represents code on the server that isn't on the local repository.
