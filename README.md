@@ -9,6 +9,6 @@ Hard working senior web design student attending The University of Central Flori
 
 Taylor Thompson LinkedIn profile: https://www.linkedin.com/in/taylor-thompsno-091b8919a/
 
-##conflicts
+## Conflicts
 
 This scetion represents code on the server that isn't on the local repository.
