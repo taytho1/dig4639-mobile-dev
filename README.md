@@ -13,7 +13,6 @@ Taylor Thompson LinkedIn profile: https://www.linkedin.com/in/taylor-thompsno-09
 1. Item1 [Google](https://www.google.com)
 1. Item2
 1. Item3
-## Conflicts
 
 ## Conflicts
 This scetion represents code on the server that isn't on the local repository.
