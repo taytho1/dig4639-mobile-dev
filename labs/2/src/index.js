@@ -1,4 +1,4 @@
-
+import Card from './src/components/Card/index.js';
 let Card; // TODO: Replace this with the correct import statement
 function runOnLoad(){    
     // Create a container for us    
