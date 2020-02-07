@@ -1,5 +1,5 @@
-import Card from './src/components/Card/index.js';
-let Card; // TODO: Replace this with the correct import statement
+import Card from './components/Card/index.js';
+this.Card; // TODO: Replace this with the correct import statement
 function runOnLoad(){    
     // Create a container for us    
     let element = document.createElement("div");    
