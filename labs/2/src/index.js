@@ -1,6 +1,7 @@
-import Card from './components/Card/index.js';
-// TODO: Replace this with the correct import statement
+import Card from "./components/Card/index.js";
+
 let element;
+
 function runOnLoad(){    
     // Create a container for us    
     element = document.createElement("div");    
