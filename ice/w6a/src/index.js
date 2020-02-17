@@ -10,47 +10,16 @@ function Square(props) {
   );
 }
 
-  class Board extends React.Component { 
-    constructor(props){
-      super(props);
-      this.state = {
-        squares: Array(9).fill(null),
-        xIsNext: true,
-      };
-    }
-    
-    handleClick(i){
-      const history = this.state.history.slice(0, this.state.stepNumber +1);
-      const current = history[history.length -1];
-      const squares = current.squares.slice();
-      if(calculateWinner(squares) || squares[i]){
-        return;
-      }
-      squares[i] = this.state.xIsNext ? 'x' : 'o';
-      this.setState({
-        history: history.concat([{
-          squares: squares,
-        }]),
-        stepNumber: history.length,
-        xIsNext: !this.state.xIsNext,
-      });
-    }
-    jumpTo(step) {
-      this.setState({
-        stepNumber: step,
-        xIsNext: (step % 2) === 0,
-      });
-    }
-
-    renderSquare(i) {
-      return(
-       <Square 
-        value={this.props.squares[i]} 
-        onclick={() => this.props.onClick(i)}
+class Board extends React.Component {
+  renderSquare(i) {
+    return (
+      <Square
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
       />
-      );
-    }
-  
+    );
+  }
+
     render() {
       return (
         <div>
@@ -78,12 +47,38 @@ function Square(props) {
     constructor(props){
       super(props);
       this.state ={
-        history: [{
+        history: [
+          {
           squares: Array(9).fill(null),
-        }],
-        stepNumber: 0,
-        xIsNext: true,
+          }
+      ],
+        stepNumber:0,
+        xIsNext: true
       };
+    }
+
+    handleClick(i){
+      const history = this.state.history.slice(0, this.state.stepNumber + 1);
+      const current = history[history.length -1];
+      const squares = current.squares.slice();
+      if(calculateWinner(squares) || squares[i]){
+        return;
+      }
+      squares[i] = this.state.xIsNext ? 'x' : 'o';
+      this.setState({
+        history: history.concat([{
+          squares: squares,
+        }]),
+        stepNumber:history.length,
+        xIsNext: !this.state.xIsNext,
+      });
+    }
+
+    jumpTo(step){
+      this.setState({
+        stepNumber: step,
+        xIsNext: (step % 2) === 0,
+      });
     }
 
     render() {
@@ -118,7 +113,7 @@ function Square(props) {
             />
           </div>
           <div className="game-info">
-            <div>{status }</div>
+            <div>{status}</div>
             <ol>{moves}</ol>
           </div>
         </div>
