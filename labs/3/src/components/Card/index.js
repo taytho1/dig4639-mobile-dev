@@ -3,11 +3,16 @@ import "./index.css";
 
 class Card extends React.Component
 {
+  constructor(props){
+        super(props);
+        this.element = document.createElement("div");
+        this.element.className = "card";
+        this.element.innerHTML = this.props.content;
+  }
   render()
   {
-    const element = this.props.content;
     return (
-    <div className="card">{element}</div>
+    <div className="card">{this.props.content}</div>
     );
   }
 }
