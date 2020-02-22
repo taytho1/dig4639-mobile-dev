@@ -4,15 +4,13 @@ import "./index.css";
 class Card extends React.Component
 {
   constructor(props){
-        super(props);
-        this.element = document.createElement("div");
-        this.element.className = "card";
-        this.element.innerHTML = this.props.content;
+    super(props);
+    this.element = this.props.content;
   }
   render()
   {
     return (
-    <div className="card">{this.props.content}</div>
+    <div className="card">{this.element}</div>
     );
   }
 }
