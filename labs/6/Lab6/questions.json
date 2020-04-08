@@ -1,0 +1,42 @@
+[
+    {
+        "question": "What replaces the header and paragraph tags in react native?",
+        "choices":
+        [
+            {"text":"Text", "correctAnswer": true},
+            {"text":"View", "correctAnswer": false}
+        ]
+    },
+    {
+        "question": "What replaces the div tags in react native?",
+        "choices":
+        [
+            {"text":"View", "correctAnswer": true},
+            {"text":"Text", "correctAnswer": false}
+        ]
+    },
+    {
+        "question": "How are styles used in react native?",
+        "choices":
+        [
+            {"text":"StyleSheet.create()", "correctAnswer": true},
+            {"text":"A CSS file", "correctAnswer": false}
+        ]
+    },
+    {
+        "question": "Where are components/elements imported from in react native?",
+        "choices":
+        [
+            {"text":"react-native", "correctAnswer": true},
+            {"text":"react", "correctAnswer": false}
+        ]
+    },
+    {
+        "question": "What should you use if data extends past the scroll bar?",
+        "choices":
+        [
+            {"text":"FlatList", "correctAnswer": true},
+            {"text":"SectionList", "correctAnswer": false}
+        ]
+    }
+]
