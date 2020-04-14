@@ -38,7 +38,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={Add}
         options={{
           title: 'Add to API',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="add" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-add" />,
         }}
       />
     </BottomTab.Navigator>

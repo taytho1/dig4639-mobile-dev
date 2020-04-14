@@ -11,16 +11,19 @@ constructor(props) {
     super(props);
 
     this.state = {
-        text: "",
-        number: "",
+        name: props.name,
+        number: props.number,
         disabledButton: true,
         disabledNumber: true,
     };
 }
-onChangeText(text){
-    if(text.length > 0) {
+onChangeText(name){
+    if(name.length > 0) {
         console.log("Text is set");
-        this.setState({disabledNumber: false})
+        this.setState({
+            disabledNumber: false,
+            name: this.props.name,
+        })
     }
     else {
         console.log("No Text");
@@ -28,10 +31,13 @@ onChangeText(text){
         this.setState({disabledButton:true})
 }
 }
-onChangeNumber(text){
-    if(text.length > 0) {
+onChangeNumber(number){
+    if(number.length > 0) {
         console.log("Number is set");
-        this.setState({disabledButton:false})
+        this.setState({
+            disabledButton:false,
+            number: this.state.number,
+        })
     }
     else {
         console.log("No Number");
@@ -39,20 +45,28 @@ onChangeNumber(text){
     }
 }
 onButtonPress(){
-    fetch('http://plato.mrl.ai:8080/contacts/add', {
-    "method": "POST",
-    "headers":{
-        "API": "thompson",
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-    },
-    body:JSON.stringify({
-        name: this.state.name,
-        number: this.state.number
-      })
-    })
-    .then(response => response.json())
-    .then(body => console.log(body))
+    if(name.length != "" && numer.length != ""){
+        fetch('http://plato.mrl.ai:8080/contacts/add', {
+        "method": "POST",
+        "headers":{
+            "API": "thompson",
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body:JSON.stringify({
+            name: this.props.name,
+            number: this.props.number
+        })
+        })
+        .then(response => response.json())
+        .then(body => console.log(body))
+    }
+    else 
+    {
+        console.log("error");
+        console.log(this.state.name);
+        console.log(this.state.number);
+    }
 }
 
 render() {
@@ -61,12 +75,12 @@ render() {
             <Text>Enter your name first:</Text>
             <TextInput
                 placeholder ="e.g. Bob"
-                onChangeText={(text) => this.onChangeText(text)}
+                onChangeText={(name) => this.onChangeText(name)}
             />
             <Text>Next, enter your phone number:</Text>
             <TextInput
                 placeholder ="e.g. 000-000-0000"
-                onChangeText={(text) => this.onChangeNumber(text)}
+                onChangeText={(number) => this.onChangeNumber(number)}
                 disabled = {this.state.disabledNumber}
             />
             <Button title="Add User" onPress={() => this.onButtonPress()} 

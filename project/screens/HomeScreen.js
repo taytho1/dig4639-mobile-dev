@@ -32,8 +32,15 @@ export default function HomeScreen() {
         <ActivityIndicator />
         :
         contacts.map((contact, i) =>
-        <Card key={i} title={contact.name}/>)
-        }
+        <Card key={i} title=
+        
+        {<Text>
+        {contact.name}
+        </Text>}>
+        {<Text>
+        {contact.number}
+        </Text>}
+        </Card>)}
       </ScrollView>
     </View>
   );
