@@ -52,6 +52,26 @@ export default class HomeScreen extends React.Component {
     this.updateContacts()
   }
 
+  removeContact(position){
+    fetch('http://plato.mrl.ai:8080/contacts/remove', {
+      "method": "POST",
+      "headers": {
+        "API": "thompson",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+    body: JSON.stringify({position:position.contacts})
+  })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body)
+      if(body.removed != undefined){
+        const currentList = this.state.contactList.filter((position,i)=>(i !== position))
+        currentList[position].completed = state
+        this.setState({contactList: currentList})
+      }
+    })
+  }
 
   /*const { promiseInProgress } = usePromiseTracker();
   const [contacts, setContacts] = React.useState([])
@@ -77,6 +97,7 @@ export default class HomeScreen extends React.Component {
         {<Text>
         {contacts.number}
         </Text>}
+        {<Button title="Delete" onPress={(i) => this.removeContact(i)}/>}
         </Card>)}
       </ScrollView>
     </View>
