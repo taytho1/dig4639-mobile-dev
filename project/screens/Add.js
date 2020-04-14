@@ -69,6 +69,7 @@ onButtonPress(){
         console.log("success");
         console.log(this.state.name);
         console.log(this.state.number);
+        this.props.navigation.navigate("Home")
     }
     else 
     {
