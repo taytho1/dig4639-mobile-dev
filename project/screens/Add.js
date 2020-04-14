@@ -6,6 +6,8 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler';
 /*import { trackPromise, usePromiseTracker, promiseTrackerHoc } from "react-promise-tracker";*/
 import { MonoText } from '../components/StyledText';
 
+const reg =/^[0-9]\d{2}-\d{3}-\d{4}$/;
+
 export default class Add extends React.Component {
 constructor(props) {
     super(props);
@@ -19,7 +21,6 @@ constructor(props) {
 }
 onChangeText(text){
     if(text.length > 0) {
-        console.log("Text is set");
         this.setState({
             disabledNumber: false,
             name: text,
@@ -33,17 +34,22 @@ onChangeText(text){
 }
 onChangeNumber(text2){
     if(text2.length > 0) {
-        console.log("Number is set");
         this.setState({
-            disabledButton:false,
-            number: text2,
+            disabledButton:false
         })
+        if(reg.test(text2)){
+            this.setState({number: text2})
+        }
+        else{
+            this.state.number = "";
+        }
     }
     else {
         console.log("No Number");
         this.setState({disabledButton:true})
     }
 }
+
 onButtonPress(){
     if(this.state.name != "" && this.state.number != ""){
         fetch('http://plato.mrl.ai:8080/contacts/add', {
@@ -66,6 +72,7 @@ onButtonPress(){
     }
     else 
     {
+        alert("incorrect credentials");
         console.log("error");
         console.log(this.state.name);
         console.log(this.state.number);
@@ -84,6 +91,7 @@ render() {
             <TextInput
                 placeholder ="e.g. 000-000-0000"
                 onChangeText={(text2) => this.onChangeNumber(text2)}
+                keyboardType="numbers-and-punctuation"
                 disabled = {this.state.disabledNumber}
             />
             <Button title="Add Contact" onPress={() => this.onButtonPress()} 
