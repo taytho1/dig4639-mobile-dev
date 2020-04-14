@@ -21,23 +21,15 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Links"
-        component={LinksScreen}
-        options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Contacts',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-list" />,
         }}
       />
       <BottomTab.Screen
         name="Add"
         component={Add}
         options={{
-          title: 'Add to API',
+          title: 'Add Contact',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-add" />,
         }}
       />

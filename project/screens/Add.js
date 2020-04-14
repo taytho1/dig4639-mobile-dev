@@ -11,18 +11,18 @@ constructor(props) {
     super(props);
 
     this.state = {
-        name: props.name,
-        number: props.number,
+        name: "",
+        number: "",
         disabledButton: true,
         disabledNumber: true,
     };
 }
-onChangeText(name){
-    if(name.length > 0) {
+onChangeText(text){
+    if(text.length > 0) {
         console.log("Text is set");
         this.setState({
             disabledNumber: false,
-            name: this.props.name,
+            name: text,
         })
     }
     else {
@@ -31,12 +31,12 @@ onChangeText(name){
         this.setState({disabledButton:true})
 }
 }
-onChangeNumber(number){
-    if(number.length > 0) {
+onChangeNumber(text2){
+    if(text2.length > 0) {
         console.log("Number is set");
         this.setState({
             disabledButton:false,
-            number: this.state.number,
+            number: text2,
         })
     }
     else {
@@ -45,7 +45,7 @@ onChangeNumber(number){
     }
 }
 onButtonPress(){
-    if(name.length != "" && numer.length != ""){
+    if(this.state.name != "" && this.state.number != ""){
         fetch('http://plato.mrl.ai:8080/contacts/add', {
         "method": "POST",
         "headers":{
@@ -54,12 +54,15 @@ onButtonPress(){
             "Accept": "application/json"
         },
         body:JSON.stringify({
-            name: this.props.name,
-            number: this.props.number
+            name: this.state.name,
+            number: this.state.number
         })
         })
         .then(response => response.json())
         .then(body => console.log(body))
+        console.log("success");
+        console.log(this.state.name);
+        console.log(this.state.number);
     }
     else 
     {
@@ -75,15 +78,15 @@ render() {
             <Text>Enter your name first:</Text>
             <TextInput
                 placeholder ="e.g. Bob"
-                onChangeText={(name) => this.onChangeText(name)}
+                onChangeText={(text) => this.onChangeText(text)}
             />
             <Text>Next, enter your phone number:</Text>
             <TextInput
                 placeholder ="e.g. 000-000-0000"
-                onChangeText={(number) => this.onChangeNumber(number)}
+                onChangeText={(text2) => this.onChangeNumber(text2)}
                 disabled = {this.state.disabledNumber}
             />
-            <Button title="Add User" onPress={() => this.onButtonPress()} 
+            <Button title="Add Contact" onPress={() => this.onButtonPress()} 
                 disabled = {this.state.disabledButton}/>
         </View>
     )
