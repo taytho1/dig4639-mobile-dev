@@ -6,16 +6,54 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { trackPromise, usePromiseTracker, promiseTrackerHoc } from "react-promise-tracker";
 import { MonoText } from '../components/StyledText';
 
-const HEADERS = {
+/*const HEADERS = {
     "method": "GET",
     "headers": {
     "API": "thompson",
     "Content-Type": "application/json",
     "Accept": "application/json"
   }
-}
-export default function HomeScreen() {
-  const { promiseInProgress } = usePromiseTracker();
+}*/
+export default class HomeScreen extends React.Component {
+  state={contactList:[]}
+  focusListener = undefined
+
+  constructor(props){
+    super(props)
+    this.focusListener = props.navigation.addListener('focus',() => this.componentGainFocus())
+  }
+
+  updateContacts() {
+    fetch('http://plato.mrl.ai:8080/contacts', {
+      "method": "GET",
+      "headers":{
+        "API":"thompson",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body)
+      this.setState({contactList: body.contacts})
+  })
+  }
+
+  componentGainFocus(){
+    console.log("Focused")
+    this.updateContacts()
+  }
+
+  componentWillUnmount(){
+    this.props.navigation.removeListener('focus', this.componentGainFocus)
+  }
+
+  componentDidMount(){
+    this.updateContacts()
+  }
+
+
+  /*const { promiseInProgress } = usePromiseTracker();
   const [contacts, setContacts] = React.useState([])
   
   React.useEffect(() => {
@@ -24,28 +62,33 @@ export default function HomeScreen() {
     )
       .then(response => response.json())
       .then(body => setContacts(body.contacts)))
-  }, [])
+  }, [])*/
+  render(){
   return (
     <View style={styles.container}>
       <ScrollView>
-        { promiseInProgress ? 
-        <ActivityIndicator />
-        :
-        contacts.map((contact, i) =>
+        
+        {this.state.contactList.map((contacts, i) =>
         <Card key={i} title=
         
         {<Text>
-        {contact.name}
+        {contacts.name}
         </Text>}>
         {<Text>
-        {contact.number}
+        {contacts.number}
         </Text>}
         </Card>)}
       </ScrollView>
     </View>
   );
 }
+}
 
+
+/*{ promiseInProgress ? 
+        <ActivityIndicator />
+        :
+*/
 HomeScreen.navigationOptions = {
   header: null,
 };
@@ -82,7 +125,6 @@ function handleHelpPress() {
     'https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change'
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
