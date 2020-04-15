@@ -71,3 +71,34 @@ return (
   );
 }
 }
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#faf0e6',
+      alignItems: "center",
+    },
+    card: {
+      flex: 1,
+      width: 500,
+      height: 200,
+      padding: 30,
+    },
+    heading: {
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+    body: {
+      fontSize: 20,
+    },
+    button: {
+      backgroundColor: '#ffc0cb',
+      width: 100,
+      padding: 5,
+      alignSelf: "flex-end",
+    },
+    buttonText: {
+      textAlign: "center",
+      fontSize: 20,
+      color: "#db7093",
+    },
+  });

@@ -17,13 +17,24 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    
+    
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME} 
+    
+    tabBarOptions={{
+      activeTintColor: '#ffc0cb',
+      activeBackgroundColor: '#db7093',
+      inactiveBackgroundColor: '#ffc0cb',
+      inactiveTintColor: '#db7093',
+    }}
+    >
+      
       <BottomTab.Screen
         name="Profile"
         component={Profile}
         options={{
           title: 'Profile',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-person" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused}  name="ios-person" />,
         }}
       />
       <BottomTab.Screen
@@ -42,7 +53,9 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-person-add" />,
         }}
       />
+      
     </BottomTab.Navigator>
+    
   );
 }
 

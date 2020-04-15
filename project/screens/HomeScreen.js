@@ -88,18 +88,16 @@ export default class HomeScreen extends React.Component {
   return (
     <View style={styles.container}>
       <ScrollView>
-        
-        {this.state.contactList.map((contacts, i) =>
-        <Card key={i} title=
-        
-        {<Text>
-        {contacts.name}
-        </Text>}>
-        {<Text>
-        {contacts.number}
-        </Text>}
-        {<Button title="Delete" onPress={() => this.removeContact(i)}/>}
-        </Card>)}
+        {<View style={styles.card}>
+            {this.state.contactList.map((contacts, i) =>
+            <Card  key={i} title=
+            {<Text style={styles.body}><Text style={styles.heading}>Name: </Text>{contacts.name}</Text>}>
+              {<Text style={styles.body}><Text style={styles.heading}>Number: </Text>{contacts.number}</Text>}
+              {<TouchableOpacity title="Delete" style={styles.button} 
+                onPress={() => this.removeContact(i)}>
+                <Text style={styles.buttonText} >Delete</Text></TouchableOpacity>}
+            </Card>)}
+        </View>}
       </ScrollView>
     </View>
   );
@@ -150,6 +148,31 @@ function handleHelpPress() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#faf0e6',
+    alignItems: "center",
+  },
+  card: {
+    flex: 1,
+    width: 500,
+    height: 200,
+    padding: 30,
+  },
+  heading: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  body: {
+    fontSize: 20,
+  },
+  button: {
+    backgroundColor: '#ffc0cb',
+    width: 100,
+    padding: 5,
+    alignSelf: "flex-end",
+  },
+  buttonText: {
+    textAlign: "center",
+    fontSize: 20,
+    color: "#db7093",
   },
 });

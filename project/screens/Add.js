@@ -95,9 +95,43 @@ render() {
                 keyboardType="numbers-and-punctuation"
                 disabled = {this.state.disabledNumber}
             />
-            <Button title="Add Contact" onPress={() => this.onButtonPress()} 
-                disabled = {this.state.disabledButton}/>
+            <TouchableOpacity title="Add Contact" onPress={() => this.onButtonPress()} 
+                disabled = {this.state.disabledButton}
+                style={styles.button} >
+                <Text style={styles.buttonText} >Add Contact</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#faf0e6',
+        alignItems: "center",
+      },
+      card: {
+        flex: 1,
+        width: 500,
+        height: 200,
+        padding: 30,
+      },
+      heading: {
+        fontSize: 20,
+        fontWeight: "bold",
+      },
+      body: {
+        fontSize: 20,
+      },
+      button: {
+        backgroundColor: '#ffc0cb',
+        width: 300,
+        padding: 5,
+        alignSelf: "center",
+      },
+      buttonText: {
+        textAlign: "center",
+        fontSize: 20,
+        color: "#db7093",
+      },
+  });
