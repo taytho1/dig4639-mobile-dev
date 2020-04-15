@@ -6,16 +6,8 @@ import { ScrollView, TextInput } from 'react-native-gesture-handler';
 /*import { trackPromise, usePromiseTracker, promiseTrackerHoc } from "react-promise-tracker";*/
 import { MonoText } from '../components/StyledText';
 
-/*const HEADERS = {
-    "method": "GET",
-    "headers": {
-    "API": "thompson",
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  }
-}*/
+/*
 export default function HomeScreen() {
-  /*const { promiseInProgress } = usePromiseTracker();*/
   const [profile, setProfile] = React.useState([])
 
   React.useEffect(() => {
@@ -42,13 +34,15 @@ export default function HomeScreen() {
   );
 }
 
-/*
 
 { promiseInProgress ? 
         <ActivityIndicator />
         :
         profile.map((p, i) =>
         <Card key={i} title={<Text>{p.name}</Text>}/>)}
+
+*/
+
 
 
 export default class Profile extends React.Component {
@@ -108,4 +102,3 @@ return (
   );
 }
 }
-*/
