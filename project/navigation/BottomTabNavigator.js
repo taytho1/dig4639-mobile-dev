@@ -5,6 +5,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import Add from '../screens/Add';
+import Profile from '../screens/Profile';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -18,11 +19,19 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <BottomTab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-person" />,
+        }}
+      />
+      <BottomTab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           title: 'Contacts',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-list" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-people" />,
         }}
       />
       <BottomTab.Screen
@@ -30,7 +39,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={Add}
         options={{
           title: 'Add Contact',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-add" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="ios-person-add" />,
         }}
       />
     </BottomTab.Navigator>
@@ -43,8 +52,8 @@ function getHeaderTitle(route) {
   switch (routeName) {
     case 'Home':
       return 'Contacts';
-    case 'Links':
-      return 'Links to learn more';
+    case 'Profile':
+      return 'Profile';
     case 'Add':
       return 'Add Contact';
   }
