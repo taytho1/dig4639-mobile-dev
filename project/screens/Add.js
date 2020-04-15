@@ -82,14 +82,17 @@ onButtonPress(){
 
 render() {
     return(
-        <View>
-            <Text>Enter your name first:</Text>
+        <View style={styles.container}>
+            <Card>
+            <Text style={styles.heading}>Enter your name first:</Text>
             <TextInput
+                style={styles.textInput}
                 placeholder ="e.g. Bob"
                 onChangeText={(text) => this.onChangeText(text)}
             />
-            <Text>Next, enter your phone number:</Text>
+            <Text style={styles.heading}>Next, enter your phone number:</Text>
             <TextInput
+                style={styles.textInput}
                 placeholder ="e.g. 000-000-0000"
                 onChangeText={(text2) => this.onChangeNumber(text2)}
                 keyboardType="numbers-and-punctuation"
@@ -100,6 +103,7 @@ render() {
                 style={styles.button} >
                 <Text style={styles.buttonText} >Add Contact</Text>
             </TouchableOpacity>
+            </Card>
         </View>
     )
 }
@@ -120,9 +124,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
       },
-      body: {
-        fontSize: 20,
-      },
       button: {
         backgroundColor: '#ffc0cb',
         width: 300,
@@ -133,5 +134,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 20,
         color: "#db7093",
+      },
+      textInput: {
+        backgroundColor: '#f5f5f5',
+        width: 300,
+        padding: 10,
+        paddingBottom: 20,
       },
   });
