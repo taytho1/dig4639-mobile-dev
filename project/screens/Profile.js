@@ -71,7 +71,13 @@ updateProfile() {
         .then(response => response.json())
         .then(body => {
           console.log(body)
-          this.setState({profileList: body.profile})
+          console.log(body.name)
+          console.log(body.count)
+          this.setState({
+            profileList: body.profile,
+            name: body.name,
+            count: body.count,
+            })
     })
 }
 componentGainFocus(){
@@ -94,8 +100,11 @@ return (
         
         <Card title=
         {<Text>
-        {this.body}
+        {this.state.name}
         </Text>}>
+        {<Text>
+        {this.state.count}
+        </Text>}
         </Card>
       </ScrollView>
     </View>
