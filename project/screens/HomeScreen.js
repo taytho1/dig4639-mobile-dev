@@ -58,17 +58,18 @@ export default class HomeScreen extends React.Component {
       "headers": {
         "API": "thompson",
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
       },
-    body: JSON.stringify({position:position.contacts})
+    body: JSON.stringify({position:position})
   })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
+      console.log(position)
       if(body.removed != undefined){
-        const currentList = this.state.contactList.filter((position,i)=>(i !== position))
-        currentList[position].completed = state
+        const currentList = this.state.contactList.filter((i)=>(i !== position))
+        currentList[position]= this.state
         this.setState({contactList: currentList})
+        this.updateContacts()
       }
     })
   }
@@ -97,7 +98,7 @@ export default class HomeScreen extends React.Component {
         {<Text>
         {contacts.number}
         </Text>}
-        {<Button title="Delete" onPress={(i) => this.removeContact(i)}/>}
+        {<Button title="Delete" onPress={() => this.removeContact(i)}/>}
         </Card>)}
       </ScrollView>
     </View>

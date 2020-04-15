@@ -23,7 +23,7 @@ onChangeText(text){
     if(text.length > 0) {
         this.setState({
             disabledNumber: false,
-            name: text,
+            name: text
         })
     }
     else {
