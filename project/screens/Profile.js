@@ -3,47 +3,7 @@ import * as React from 'react';
 import { Button, Platform, StyleSheet, TouchableOpacity, Text, View, ActivityIndicator } from 'react-native';
 import { Card } from 'react-native-elements';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
-/*import { trackPromise, usePromiseTracker, promiseTrackerHoc } from "react-promise-tracker";*/
 import { MonoText } from '../components/StyledText';
-
-/*
-export default function HomeScreen() {
-  const [profile, setProfile] = React.useState([])
-
-  React.useEffect(() => {
-    console.log("Use Effect")
-    fetch('http://plato.mrl.ai:8080/profile',{
-        "method": "GET",
-        "headers": {
-        "API": "thompson",
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-    })
-      .then(response => response.json())
-      .then(body => setProfile(body.profile))
-      console.log(profile)
-  })
-
-  return (
-    <View >
-    <ScrollView>
-        <Card title={<Text>{profile}</Text>}/>
-      </ScrollView>
-    </View>
-  );
-}
-
-
-{ promiseInProgress ? 
-        <ActivityIndicator />
-        :
-        profile.map((p, i) =>
-        <Card key={i} title={<Text>{p.name}</Text>}/>)}
-
-*/
-
-
 
 export default class Profile extends React.Component {
     state={profileList:[]}
