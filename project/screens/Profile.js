@@ -55,17 +55,18 @@ componentDidMount(){
 
 render(){
 return (
-    <View>
+    <View style={styles.container}>
       <ScrollView>
-        
-        <Card title=
-        {<Text>
-        {this.state.name}
-        </Text>}>
-        {<Text>
-        {this.state.count}
-        </Text>}
-        </Card>
+        <View style={styles.card}>
+            <Card  title=
+                {<Text style={styles.heading}>
+                {this.state.name}
+                </Text>}>
+                {<Text style={styles.heading}>
+                {this.state.count}
+                </Text>}
+            </Card>
+        </View>
       </ScrollView>
     </View>
   );
@@ -79,26 +80,11 @@ const styles = StyleSheet.create({
     },
     card: {
       flex: 1,
-      width: 500,
+      width: 700,
       height: 200,
-      padding: 30,
     },
     heading: {
       fontSize: 20,
       fontWeight: "bold",
-    },
-    body: {
-      fontSize: 20,
-    },
-    button: {
-      backgroundColor: '#ffc0cb',
-      width: 100,
-      padding: 5,
-      alignSelf: "flex-end",
-    },
-    buttonText: {
-      textAlign: "center",
-      fontSize: 20,
-      color: "#db7093",
     },
   });

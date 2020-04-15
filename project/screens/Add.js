@@ -83,7 +83,7 @@ onButtonPress(){
 render() {
     return(
         <View style={styles.container}>
-            <Card>
+            <Card style={styles.card}>
             <Text style={styles.heading}>Enter your name first:</Text>
             <TextInput
                 style={styles.textInput}
